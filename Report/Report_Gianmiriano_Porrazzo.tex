@@ -1,0 +1,172 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage{imakeidx}
+\usepackage[pdftex, bookmarks, colorlinks, breaklinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+%% TO enhance output
+\usepackage{lmodern}
+\usepackage{amssymb}
+
+%%Input config
+\input{config/config}
+%%img
+\graphicspath{{./img/}}
+%%Page size
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    total={170mm, 260mm},
+    left=20mm,
+    top=20mm,
+}
+%%Bibliography
+\usepackage[backend=bibtex,style=ieee,sorting=none]{biblatex}
+\bibliography{./bib/bibliography}
+
+%% Code
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codeorange}{RGB}{  243, 156, 18  }
+\definecolor{back}{RGB}{ 214, 219, 223 }
+
+\definecolor{codegreen1}{RGB}{ 82, 190, 128}
+\definecolor{codegray}{RGB}{0.5,0.5,0.5}
+\definecolor{codeorange1}{RGB}{  243, 156, 18  }
+\definecolor{back1}{RGB}{ 214, 219, 223 }
+
+\definecolor{c1py}{RGB}{ 187, 143, 206 }
+\definecolor{c2py}{RGB}{ 133, 193, 233 }
+\definecolor{bpy}{RGB}{ 212, 239, 223}
+
+\lstset{
+    breaklines=true,
+    breakatwhitespace=false,
+}
+%% Dockerfile
+\lstdefinestyle{docker}{
+    keywords={FROM, RUN, COPY, ADD, ENTRYPOINT, CMD,  ENV, ARG, WORKDIR, EXPOSE, LABEL, USER, VOLUME, STOPSIGNAL, ONBUILD, MAINTAINER},
+    backgroundcolor=\color{back},
+    commentstyle=\color{codegray},
+    keywordstyle=\color{codeorange}\bfseries,
+    %numberstye=\tiny\color{codegray},
+    stringstyle=\color{codegreen},
+    basicstyle=\ttfamily\linespread{1.15}\footnotesize,
+    comment=[l]{\#},
+    morestring=[b]',
+    morestring=[b]",
+    keepspaces=true,                 
+    numbers=none,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    xleftmargin=7pt,
+}
+%% bash
+
+\lstdefinestyle{bash}{
+    keywords={set , echo, cat, local, for, if, else, then, do, done, in, find, sort, chown, slapd,kill, sleep, convert_schema, reconfigure_slapd, load_initial_data, configure_admin_config_pw, sed, ldapmodify, ldapadd},
+    backgroundcolor=\color{back1},
+    commentstyle=\color{codegray},
+    keywordstyle=\color{codegreen1},
+    %numberstye=\tiny\color{codegray},
+    stringstyle=\color{codeorange},
+    basicstyle=\ttfamily\footnotesize,
+    comment=[l]{\#},
+    string=[l]{\"},
+    captionpos=b,                    
+    keepspaces=true,                 
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    xleftmargin=10pt,
+}
+%%Python
+
+\lstdefinestyle{python}{
+    keywords={from, import, with, as},
+    ndkeywords = {olama, Ollama, write, open},
+    backgroundcolor=\color{bpy},
+    commentstyle=\color{codegray},
+    keywordstyle=\color{c1py},
+    %numberstye=\tiny\color{codegray},
+    stringstyle=\color{codegreen},
+    ndkeywordstyle=\color{c2py},
+    basicstyle=\ttfamily\footnotesize,
+    captionpos=b,                    
+    keepspaces=true,                 
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    xleftmargin=10pt,
+}
+\renewcommand{\contentsname}{Index} %index
+
+\begin{document}
+
+% Back images
+
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+    \center
+        \vspace*{\baselineskip}
+        \vfill\vfill\vfill\vfill\vfill
+        \textsc{\LARGE ALMA MATER STUDIORUM \\ UNIVERSITY OF BOLOGNA }\\[1.5cm]
+        
+        \textsc{\Large Master in Computer Engineering}\\[0.5cm]
+        %TITLE
+        \HRule\\[0.4cm]
+        {\huge\bfseries GAN for Network Traffic \\ Generation}\\[0.4cm]
+        {\Large \textit{using ZEEK IDS}}
+        \HRule\\[1.5cm]
+        %YEAR
+        {\large A.Y. 2023-2024}
+        % AUTHOR
+        \vfill\vfill
+		        \center
+            \begin{tabular}[t]{@{} r l @{}}
+			      \large
+			          %\textit{Made by}\\
+			          Porrazzo \textsc{Gianmiriano}\\ % Your name
+            \end{tabular}
+
+        \vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	          %\raggedright
+            %{\large\today} % Date, change the \today to a set date if you want to be precise
+	
+	\vfill % Whitespace between the titles and the publisher
+	
+\end{titlepage}
+
+
+    %%%%%%% INDEX %%%%%%%%%%%%%%
+    \hypersetup{
+        colorlinks=true,
+        linkcolor=black,
+        citecolor=black
+    }
+    \tableofcontents
+    %%%%%%% INTRODUCTION %%%%%%%
+    \input{chapter/intro.tex}
+    %%%%%%% WHAT IS ZEEK %%%%%%%
+    \input{chapter/cap1.tex}
+    %%%%%%% INPUT %%%%%
+    \input{chapter/cap2.tex}
+    %%%%%%% DATA GENERATION / GAN%%%%
+    \input{chapter/cap3.tex}
+    %%%%%%% DEPLOY %%%%%%%%%%%%%
+    %\input{chapter/cap4.tex}
+    %%%%%%% END %%%%%%%%%%%%%%%%
+    \input{chapter/final.tex}
+    %%%%%%% BIBLIOGRAPHY %%%%%%%
+    \printbibliography[heading=bibintoc]
+\end{document}

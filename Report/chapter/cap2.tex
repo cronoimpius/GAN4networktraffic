@@ -1,0 +1,35 @@
+\chapter{Input Data}
+To make new data similar from some existing ones, we need a dataset of how those data needs to look like.
+For this reason we describe di input data, from which we can create new examples.
+The inital data needs to be transformed in some way, so it can be given as an input of our GAN.
+\\\\
+The composition of our dataset is a pcap file. This kind of files contain packet data of a network and are
+ofen used to analyze the network characteristics and detect if there're anomalies and intrusions.
+Since this kind of data is difficult to manage, even if it's well formatted, a first step is to convert the 
+data as a csv dataset.
+\\\\
+In this way we can easily manage the data before giving them to the network and viewing the final results in a
+simpler way.
+The pcap file is something like the following:
+%image of an extraction of the pcap file
+while the output of the conversion of the pcap into the csv is a dataset like:
+%image of extraction of the dataset
+\section{Data Conversion}
+To convert the pcap file into the csv, and viceversa we have created the following script that aims to 
+do this kind of transofrmations.
+%extract of the script
+The foundamental informations are extracted using Scapy \cite{scapy}, a python library used to extract data from packets
+saved into a pcap file. The main information that we need are:
+\begin{itemize}
+    \item the packet number
+    \item the protocol used 
+    \item the timestamp
+    \item the source ip and port
+    \item the destination ip and port
+    \item the flag if tcp protocol is used
+\end{itemize}
+from the script we extract those infos from the pcap and store them into the final csv, for each packet into 
+the file.
+\\\\
+Once adjusted the data source, we can continue developing the core of the project: the GAN that generates new
+data.

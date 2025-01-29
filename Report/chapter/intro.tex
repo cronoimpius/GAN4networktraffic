@@ -1,0 +1,16 @@
+\chapter*{Introduction}
+Packet caputere dataset can be used for evaluating network-based detection-systems, also known as NIDS.
+In this reasearch we want to generate new packet capture dataset that are realistic. 
+\\\\
+The approach used is based on \textit{Generative Adversial Networks (GANs)} which achieve good results for 
+image generation. The main problem here is that work very well with continuos attributes, and they can 
+process only them. However, packet capture data contain categorical attributes such IP addresses or port numbers.
+Exploiting this characteristic of the data that we use, we can implement an approach for generating packet-capture
+data to transform them into continuos values.
+\\\\
+Once the data is generated, there is a testing phase that also include the usage of a real NIDS to 
+verify if they are corretly generated and identified. In that phase we use \textbf{ZEEK} that is an open 
+source network analysis framework, but in our scope we use it mainly as a Network Intrusion Detection System.
+\\\\
+In the following pages we will discuss all the detail and the motivation for all the deciosion that has been
+made.

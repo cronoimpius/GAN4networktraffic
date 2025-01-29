@@ -1,0 +1,4 @@
+- Inserire foto mancanti dati
+- Terminare capitolo 4 e risultati
+- PP
+- completamento gestione pcap <-> csv

@@ -1,0 +1,17 @@
+./old/*
+*.run.xml
+*blx.bib
+*.aux
+*.out
+*.log
+*.toc
+*.lof
+*.gz
+*.csv
+*.bbl
+*.blg
+*.fdb*
+*.fls
+*.pcap
+*.zip
+*.txt

@@ -1,0 +1,32 @@
+% vim:ft=tex:
+%
+\usepackage[explicit]{titlesec}
+\usepackage{calc} %for \widthof
+% Title format: chapter\titleformat{\chapter}[hang]
+\titleformat{\chapter}[hang]
+{\filcenter}
+{\parbox{\widthof{\LARGE\sffamily\MakeUppercase{\chaptername}}}{%
+   \filcenter\Large\usefont{T1}{phv}{m}{n}\MakeUppercase{\chaptername}\\%
+   \fontsize{48pt}{48pt}\selectfont\thechapter%
+ }\enspace%
+}
+{0pt}
+{\Huge\usefont{T1}{phv}{b}{n}\vrule width 1pt \enspace%
+ \parbox{\textwidth-\widthof{\LARGE\sffamily\MakeUppercase{\chaptername}\enspace}}{\filright #1}%
+}
+% Title format: section
+%\titleformat{\section}[hang]{\sffamily\bfseries\filright\lsstyle}{}{0em}{\rule[-0.25cm]{1.5pt}{1cm}\quad#1}
+\titleformat{\section}[hang]
+{\filcenter}
+{\parbox{\widthof{\Large\sffamily{Chapter}}}{
+        \filcenter\Large\usefont{T1}{phv}{b}{Chapter}
+        \selectfont\thesection%
+    }\enspace
+}{0pt}
+{\Large\usefont{T1}{phv}{b}{n}\vrule width 1pt \enspace%
+\parbox{\textwidth-\widthof{\Large\sffamily{Chapter}\enspace}}{\filright #1}}
+
+% Title format: subsection
+
+% Title format: subsubsection
+
